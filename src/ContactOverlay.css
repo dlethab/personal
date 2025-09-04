@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: serif;
+  font-size: 15px;
+}
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(96, 12, 230);
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto; 
+  opacity: 1;
+  z-index: 1102;
+}
+
+
+.popup-overlay {
+  background-color: rgba(0, 0, 0, 0);
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 1103;
+}
+
+.main-popup {
+	position: fixed;
+	left: 0;
+	height: 60vh; /* Adjust this to your preference */
+	width: 100%;
+	z-index: 1000000;
+	background: #472C4C;
+	padding: 30px 20px;
+	line-height: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start; /* Start aligning it from the top */
+	transform: translateY(-100%);
+	top: 0%; /* Adjust this to the desired starting point */
+  border-bottom: 1px solid black;
+  overflow-y: auto;
+}
+
+.close-btn {
+  z-index: 2;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;      /* remove default button background */
+  border: none;          /* remove borders */
+  padding: 0;            /* remove padding */
+  margin: 0;             /* remove any margin */
+  cursor: pointer;       /* show pointer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;         /* remove focus outline */
+  transition: transform 0.2s ease;
+}
+
+
+.close-btn:hover {
+  transform: scale(1.1);
+}
+
+.popup-content p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(-100%); /* Start off-screen */
+  }
+  100% {
+    transform: translateY(0); /* Slide into view */
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%); /* slide up instead */
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .main-popup {
+    height: 100vh; /* Cover 75% of the viewport on mobile */
+    padding: 20px 15px; /* optional smaller padding for small screens */
+  }
+  .popup-content-wrapper {
+    flex-direction: column; /* stack top and bottom */
+  }
+  .popup-left {
+    padding-top: 3rem !important;
+  }
+  .popup-right {
+    width: 100%;
+    height: 50%; /* bottom half */
+  }
+  .popup-right img {
+    height: 100%;
+  }
+}
+
+.popup-content-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.popup-left {
+  flex: 1;
+  padding: 10px;
+}
+
+.popup-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;   /* text on top, image pinned to bottom */
+  justify-content: flex-end; /* pins image to the bottom */
+  align-items: center;
+  position: relative;
+  padding: 1rem 10px 10px 10px; /* 1rem top padding, others as before */
+  overflow: hidden;         /* ensures nothing escapes */
+  padding-top: 1rem !important; /* ensures text doesn't touch top */
+}
+
+.popup-right img {
+  width: 90%;               /* slightly bigger than before */
+  max-width: 350px;         /* max size to prevent overflow */
+  height: auto;             /* maintain aspect ratio */
+  max-height: 110%;          /* can't take more than 60% of container height */
+  object-fit: contain;      /* fit without distortion */
+  z-index: 1;                     /* ensure it's above background */
+  border-bottom: 1px solid black; /* thin black border at bottom */
+}
+
+
+/* Shared style for all text input fields */
+.contact-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: none;                
+  border-top: 1.5px solid black;    
+  border-bottom: 1.5px solid black; 
+  border-radius: 0;            
+  background-color: transparent;  
+  color: black;           
+  font-size: 1.5rem;  
+  font-family: serif;          
+  outline: none;               
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+/* Placeholder text */
+.contact-input::placeholder {
+  color: black;                
+  opacity: 1;                  
+}
+
+/* Highlight the entire box on focus */
+.contact-input:focus {
+  background-color: rgba(173, 216, 230, 0.5);  /* semi-transparent light blue */
+  color: black;                
+}
+
+.contact-input.contact-message {
+  height: 90px;        /* slightly taller than normal input */
+  resize: none;        /* cannot resize */
+  overflow-y: auto;    /* allow scrolling if text overflows */
+}
+
+
+
+.popup-image {
+  width: 60%;        /* skinnier horizontally */
+  max-width: 300px;  /* optional */
+  height: auto;
+  object-fit: cover;
+}
+.contact-actions {
+  display: flex;
+  justify-content: space-between; /* left = Submit, right = LinkedIn */
+  align-items: center;
+  font-family: serif;
+  width: 100%; /* ensures it spans full width of popup-left */
+}
+
+.contact-submit{
+  font-size: 1.5rem; /* matches your contact fields */
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  color: rgba(173, 216, 230, 0.5);
+  text-decoration: underline;
+}
+
+/* Only underline and make black when Submit is active (all fields filled) */
+.contact-submit.enabled {
+  color: black;
+  text-decoration: underline;
+}
+.linkedin-link {
+  font-size: 1.5rem;      /* match your other text */
+  color: black;           /* always black */
+  text-decoration: underline; /* always underlined */
+  cursor: pointer;
+  transition: color 0.3s ease; /* smooth color change on hover */
+}
+
+.linkedin-link:hover {
+color: rgba(173, 216, 230, 0.5);
+  text-decoration: underline; /* stay underlined */
+}
+

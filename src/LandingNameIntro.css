@@ -1,0 +1,91 @@
+/* Make sure there is zero page margin interference */
+html, body, #root { height: 100%; }
+body { margin: 0; }
+
+.name-header-shell { position: relative; z-index: 60; display:flex; justify-content:center; }
+.name-intro-overlay { position: fixed; inset: 0; height: 100vh; overflow: hidden; pointer-events:none; z-index: 50; }
+.name-intro-cover { position:absolute; inset:0; background: var(--intro-cover, #e5ddcf); }
+
+
+.name-intro-line {
+  position: relative;
+  z-index: 1;            /* text above cover while animating */
+}
+
+
+
+
+
+/* Your existing .page-title stays as-is (you already have this) */
+.page-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  overflow: visible;
+
+  font-family: serif;
+  font-weight: bold;
+  font-size: clamp(2rem, 12vw, 8rem);
+  color: #000000;
+  letter-spacing: 0.05em;
+  mix-blend-mode: normal;
+  z-index: 5;
+
+  padding-bottom: 20px;
+}
+
+/* final header */
+.page-title.name-header {
+  font-family: serif;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 0.95;
+}
+
+/* overlay text */
+.name-intro-text {
+  font-family: serif;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 0.95;
+  will-change: transform;
+}
+
+.name-intro-overlay { position: fixed; inset: 0; display: grid; grid-template-rows: 1fr 1fr; z-index: 2147483647; }
+.name-intro-bg { position: absolute; inset: 0; background: #e5ddcf; z-index: 0; }
+.name-intro-line--top { justify-items: start;  align-items: start; }
+.name-intro-line--bottom { justify-items: end;  align-items: end; }
+
+/* when the overlay becomes the header */
+.name-intro-overlay--final {
+  position: absolute;
+  inset: auto;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent !important;
+  display: inline-block;
+  grid-template-rows: initial;
+  z-index: 5;
+}
+.name-intro-overlay--final .name-intro-line { display: inline; vertical-align: baseline; }
+.name-intro-overlay--final .name-intro-line--top { margin-right: 0.25ch; }
+
+.name-header {
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1;
+  font-weight: 800;
+  transform-origin: center top;
+  will-change: transform;
+}
+
+.name-header-full {
+  display: inline-block;
+  white-space: nowrap;
+}
+

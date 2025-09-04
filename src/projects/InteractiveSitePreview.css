@@ -1,0 +1,67 @@
+/* Width + rhythm match your case page */
+.live-frame-section {
+  max-width: var(--case-max, 1100px);
+  padding: 0 var(--pad, 24px);
+  margin: 12px auto 24px;
+}
+
+/* Toolbar */
+.live-frame-toolbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 12px;
+  border: 1px solid var(--rule, #e8e8e8);
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
+  background: #fff;
+}
+.live-frame-meta { display: inline-flex; align-items: center; gap: 8px; color: var(--muted, #6b6b6b); }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: #2ecc71; display: inline-block; }
+.live-domain { font-size: 0.92rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 52vw; }
+
+.live-frame-actions { display: inline-flex; gap: 6px; align-items: center; }
+.live-btn {
+  appearance: none; border: 1px solid var(--rule, #e8e8e8); background: #fff;
+  font: inherit; font-size: 0.9rem; padding: 6px 10px; border-radius: 9px; cursor: pointer;
+}
+.live-btn:hover { background: #f7f7f7; }
+.live-open { text-decoration: none; }
+
+/* Frame container */
+.live-frame-wrap {
+  position: relative;
+  width: 100%;
+  background: #fafafa;
+  border: 1px solid var(--rule, #e8e8e8);
+  border-top: none;
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
+}
+
+/* Skeleton while loading */
+.live-frame-skel {
+  position: absolute; inset: 0; display: grid; gap: 8px; padding: 16px;
+  background: linear-gradient(90deg, #f2f2f2 25%, #fafafa 37%, #f2f2f2 63%); background-size: 400% 100%;
+  animation: liveShine 1.4s ease-in-out infinite;
+  z-index: 1;
+}
+.live-frame-skel .bar { height: 12px; background: rgba(0,0,0,0.06); border-radius: 6px; }
+@keyframes liveShine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* Iframe itself */
+.live-iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  border: 0; opacity: 0; transition: opacity 220ms ease;
+  background: #fff;
+}
+.live-iframe.is-loaded { opacity: 1; }
+
+/* Blocked overlay */
+.live-blocked {
+  position: absolute; inset: 0; display: grid; place-items: center; text-align: center;
+  padding: 24px; background: rgba(255,255,255,0.9); z-index: 2; color: #333;
+  font-size: 0.95rem; line-height: 1.5;
+}
+.live-blocked a { color: inherit; text-decoration: underline; }
+.live-blocked code {
+  background: #f1f1f1; padding: 2px 4px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}

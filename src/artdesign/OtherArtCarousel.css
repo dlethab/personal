@@ -1,0 +1,223 @@
+/* General styles for Embla slider */
+.art-embla {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  cursor: grab;
+}
+
+.art-embla:active {
+  cursor: grabbing;
+}
+
+.art-embla__container {
+  display: flex;
+  gap: clamp(14px, 2.5vw, 24px);
+  will-change: transform;
+  padding: 1rem;
+}
+
+/* Slide item styles */
+.art-embla__slide {
+  flex: 0 0 auto;
+  width: clamp(220px, 28vw, 320px);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
+  justify-content: center; /* Center the content vertically */
+  padding: 1rem;
+  text-align: center;
+  /*transition: transform 0.3s ease-in-out; */
+}
+
+.art-exp-logo-wrap {
+  width: 100%; /* Make the wrap full width */
+  height: 250px; /* Set a fixed height for the image */
+  max-width: 320px; /* Optional: limit max width */
+  overflow: hidden;
+  border-radius: 12px; /* Rounded corners */
+  margin-bottom: 12px; /* Space between the image and title */
+  display: flex; /* Use flexbox to center the image inside */
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+}
+
+/* Ensure the image fills the container and is centered */
+.art-exp-logo-wrap img {
+  width: 100%; /* Make the image fill the container */
+  height: 100%; /* Make the image fill the container height */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  object-position: center; /* Center the image within the container */
+}
+
+/* Title styling */
+.art-embla__slide .art-exp-title {
+  font-size: 1.25rem;
+  margin-top: 12px;
+  color: #333;
+}
+
+/* Date styling */
+.art-embla__slide .art-exp-date {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Card visuals (reuse) */
+.art-exp-item2 {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.art-exp-card2 {
+  display: grid;
+  grid-template-columns: 1fr; /* Adjusted to center content */
+  gap: 12px;
+  align-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 12px;
+  background: #fff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  position: relative;
+  animation: card-float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Shadow effect for the card */
+.art-exp-card2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 60%;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+    rgba(0,0,0,0.18) 0%,
+    rgba(0,0,0,0.12) 40%,
+    rgba(0,0,0,0) 70%);
+  filter: blur(6px);
+  opacity: 0.6;
+  animation: shadow-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes card-float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes shadow-pulse {
+  0% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+  50% { transform: translateX(-50%) scale(0.95); opacity: 0.45; }
+  100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+}
+
+.art-exp-item2:hover .art-exp-card2 {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+}
+
+.art-exp-card2.current-page {
+  border-color: #111;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+  animation-duration: 3.6s;
+}
+/* Responsiveness: Adjusting for smaller screens (max-width: 560px) */
+@media (max-width: 560px) {
+  /* Adjust the size of the card and image for mobile */
+  .art-exp-card2 {
+    grid-template-columns: 1fr; /* Single column layout for small screens */
+    padding: 12px; /* Add some padding for better spacing */
+  }
+
+  /* Adjust the image container size for mobile */
+  .art-exp-logo-wrap {
+    width: 100%; /* Make the logo container a bit smaller on mobile */
+    height: 200px; /* Adjust height of the image container */
+    border-radius: 10px;
+    margin-bottom: 12px; /* Space between the image and the title */
+  }
+
+  /* Ensure the image inside the logo wrap fills the container */
+  .art-exp-logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container */
+    object-position: center; /* Keep the image centered */
+  }
+
+  /* Adjust title size for smaller screens */
+  .art-exp-title {
+    font-size: 1.1rem; /* Slightly smaller title for better fit */
+    margin-top: 10px; /* Add a little spacing from the image */
+  }
+
+  /* Adjust date size and spacing for mobile */
+  .art-exp-date {
+    font-size: 0.8rem; /* Smaller font size for the date */
+    color: #777;
+    margin-top: 6px; /* Space the date below the title */
+  }
+  
+  /* Additional card tweaks */
+  .art-exp-item2 {
+    font-size: 0.9rem; /* Adjust text size for mobile devices */
+  }
+
+  /* Make sure the card elements have good spacing and centering */
+  .art-exp-card2 {
+    border-radius: 12px;
+    padding: 10px;
+    background: #fff;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .art-exp-card2,
+  .art-exp-card2::after {
+    animation: none !important;
+  }
+}
+
+/* Shell styles for Embla container */
+.art-other-exp-shell .art-embla {
+  width: 100%;
+}
+
+.art-other-exp-shell .art-embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.art-other-exp-shell .art-embla__container {
+  display: flex;
+  gap: 16px;
+}
+
+.art-other-exp-shell .art-embla__slide {
+  flex: 0 0 auto;
+  width: clamp(220px, 28vw, 320px);
+}
+
+/* Ensuring large image with centered title and date inside each slide */
+.art-embla__slide .art-exp-item2 {
+  display: block;
+  text-align: center;
+}
+
+.art-embla__slide .art-exp-title {
+  font-size: 1.25rem;
+  margin-top: 12px;
+  color: #333;
+}
+
+.art-embla__slide .art-exp-date {
+  font-size: 0.9rem;
+  color: #777;
+}

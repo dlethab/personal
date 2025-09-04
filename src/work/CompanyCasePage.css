@@ -1,0 +1,96 @@
+/* CompanyCasePage.css */
+
+:root {
+  --case-max: 1100px;
+  --pad: clamp(16px, 3vw, 32px);
+  --muted: #6b6b6b;
+  --ink: #111;
+  --rule: #e8e8e8;
+}
+
+/* Page wrapper */
+.case-wrap { display: block; color: var(--ink); padding-top: clamp(20px, 5vw, 60px);}
+
+/* Header */
+.case-header {
+  max-width: var(--case-max);
+  padding: 0 var(--pad);
+  margin: 8px auto 8px;
+}
+.case-breadcrumb { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.92rem; }
+.crumb { text-decoration: none; color: inherit; }
+.crumb:hover { text-decoration: underline; }
+.crumb-sep { opacity: 0.6; }
+.crumb.current { color: var(--ink); }
+
+.case-title { font-size: clamp(28px, 4vw, 52px); line-height: 1.08; letter-spacing: -0.02em; margin: 8px 0 8px 0; }
+.case-subtitle { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); max-width: 70ch; margin-bottom: 18px; }
+
+.case-meta { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 20px; }
+.meta-chip { display: inline-flex; gap: 8px; align-items: baseline; border: 1px solid var(--rule); padding: 8px 12px; border-radius: 999px; background: #fff; }
+.meta-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.meta-value { font-size: 14px; }
+
+/* Details */
+.case-details { max-width: var(--case-max); padding: 0 var(--pad) var(--pad); margin: 0 auto; }
+.detail-block { margin: 22px 0 26px; }
+.detail-divider { height: 1px; background: var(--rule); width: 100%; margin: 10px 0 16px; }
+.detail-title { font-size: clamp(18px, 2.4vw, 22px); margin: 0 0 6px 0; }
+.detail-body { color: #2c2c2c; line-height: 1.6; max-width: 78ch; }
+
+/* Pager */
+.case-pager {
+  max-width: var(--case-max);
+  padding: 0 var(--pad) var(--pad);
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--rule);
+}
+.pager-link { text-decoration: none; color: var(--ink); padding: 12px 0; transition: transform 0.15s ease, opacity 0.15s ease; }
+.pager-link:hover { transform: translateX(2px); opacity: 0.8; }
+
+/* Section heading (shared) */
+.other-exp-section {
+  max-width: var(--case-max);
+  padding: 0 var(--pad);
+  margin: 24px auto 8px;
+}
+.other-exp-heading { font-size: 0.95rem; color: black; margin: 0 0 10px 0; }
+
+.page-title {
+  position: absolute;     /* relative to section container */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  overflow: auto;
+
+  font-family: serif; 
+  font-weight: bold;
+  font-size: clamp(2rem, 12vw, 8rem); /* responsive size */
+  color: #000000;
+  letter-spacing: 0.05em;
+  mix-blend-mode: normal; /* always visible */
+  z-index: 5;
+
+  padding-bottom: 20px;
+}
+
+/* Make the title participate in layout on this page */
+.page-title--static {
+  position: static;
+  left: auto;
+  transform: none;
+  display: block;
+  text-align: center;   /* keep the same visual centering */
+  margin: 0 0 16px;
+}
+
+/* Give the collage its own block spacing and match your page width */
+.collage-stage-wrap {
+  max-width: var(--case-max);
+  margin: 12px auto 0;
+  padding: 0 var(--pad);
+  position: static;
+}
