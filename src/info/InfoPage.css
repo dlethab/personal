@@ -1,0 +1,173 @@
+html, body {
+  font-family: serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* General layout */
+.info-container {
+  display: flex; /* Desktop layout */
+  justify-content: space-between;
+  padding-top: clamp(60px, 6vw, 80px);
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.5s forwards;
+  min-height: 100vh; /* Full viewport height for vertical split on mobile */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Left side */
+.left-side {
+  width: 48%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.left-side h2 {
+  font-size: 2rem;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile-info .profile-img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+.profile-info .description {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #555;
+}
+
+/* Right side */
+.right-side {
+  width: 48%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.right-side h3 {
+  font-size: 1.5rem;
+}
+
+.links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links-list li {
+  margin-bottom: 10px;
+}
+
+.links-list a {
+  text-decoration: none;
+  color: #007BFF;
+  font-size: 1.1rem;
+}
+
+.links-list a:hover {
+  text-decoration: underline;
+}
+
+/* Resume toggle */
+.resume-toggle {
+  margin-top: 20px;
+}
+
+.resume-content {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+.resume-content a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.resume-content a:hover {
+  text-decoration: underline;
+}
+
+#toggleResume {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 5px;
+}
+
+#toggleResume:hover {
+  background-color: #0056b3;
+}
+/* Mobile (<450px) */
+@media (max-width: 450px) {
+  .info-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr; /* Split height equally */
+    grid-template-columns: 1fr;
+    padding: 20px 10px; /* Less padding to fit more content */
+    gap: 15px;
+    min-height: 100vh;
+  }
+
+  .left-side,
+  .right-side {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically in each grid row */
+    align-items: flex-start; /* Left align content */
+    padding: 0 5vw; /* Make use of more width dynamically */
+  }
+
+  .left-side h2,
+  .right-side h3 {
+    font-size: 6vw; /* Make headings scale with screen width */
+  }
+
+  .profile-info .description {
+    font-size: 4.5vw; /* Scale text with screen width */
+    margin-bottom: 1em;
+  }
+
+  .profile-info .profile-img {
+    width: 40vw; /* Image scales to 40% of viewport width */
+    height: auto; /* Keep aspect ratio */
+    max-width: 150px; /* Optional cap so it’s not too huge on slightly larger screens */
+    margin-bottom: 1em;
+  }
+
+  .links-list a {
+    font-size: 4.5vw; /* Make links scale to screen */
+    line-height: 1.4;
+  }
+
+  .resume-content a {
+    font-size: 4.5vw;
+  }
+
+  #toggleResume {
+    font-size: 4.5vw;
+    padding: 8px 16px;
+  }
+}

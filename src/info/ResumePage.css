@@ -1,0 +1,33 @@
+/* Container styling */
+.resume-container {
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 120vh;
+  box-sizing: border-box;
+  margin-top: 7%;
+}
+
+/* Iframe styling for desktop */
+.resume-iframe {
+  width: 90%;
+  height: 140vh;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 1200px;
+  zoom: 1; /* default for desktop */
+}
+
+/* Mobile styles */
+@media (max-width: 450px) {
+  .resume-iframe {
+    transform: scale(1);  /* zoom out PDF content */
+    width: 100%;             /* keep same iframe width */
+    height: 100vh;          /* keep same iframe height */
+  }
+
+  .resume-container {
+    padding: 1rem 0.5rem;
+  }
+}

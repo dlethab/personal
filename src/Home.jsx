@@ -126,7 +126,7 @@ export default function Home() {
               <li><Link to="#" onClick={handleContactClick}>CONTACT</Link></li>
               <li><Link to="/workexperience/chartbeat">WORK EXPERIENCE</Link></li>
               <li><Link to="/projects/dial-in">TECHNICAL PROJECTS</Link></li>
-              <li><Link to="/">INFORMATION</Link></li>
+              <li><Link to="/info">INFORMATION</Link></li>
             </ul>
 
 

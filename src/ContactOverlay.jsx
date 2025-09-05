@@ -122,7 +122,15 @@ const ContactOverlay = ({ isOpen, closePopup }) => {
               Submit
             </div>
 
-            {/* LinkedIn link */}
+            <a
+              href="https://github.com/dlethab"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="linkedin-link"
+            >
+              Github
+            </a>
+
             <a
               href="https://www.linkedin.com/in/dlet-habtemariam/"
               target="_blank"
@@ -131,6 +139,8 @@ const ContactOverlay = ({ isOpen, closePopup }) => {
             >
               LinkedIn
             </a>
+            
+
           </div>
 
           </div>
