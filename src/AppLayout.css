@@ -14,7 +14,8 @@
   position: relative;           /* was: sticky */
   top: auto;                    /* was: 0 */
   z-index: 1;
-  background: transparent;      /* or #e5ddcf if you want a band */
+  background-color: #e5ddcf;
+  /*background: transparent;       or #e5ddcf if you want a band */
   display: block;
   padding: 0;                   /* remove padding so fitExact sees full width */
   margin: 0;

@@ -36,7 +36,7 @@
 .detail-block { margin: 22px 0 26px; }
 .detail-divider { height: 1px; background: var(--rule); width: 100%; margin: 10px 0 16px; }
 .detail-title { font-size: clamp(18px, 2.4vw, 22px); margin: 0 0 6px 0; }
-.detail-body { color: #2c2c2c; line-height: 1.6; max-width: 78ch; }
+.detail-body { color: #2c2c2c; line-height: 1.6;}
 
 /* Pager */
 .case-pager {

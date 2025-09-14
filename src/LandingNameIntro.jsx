@@ -21,8 +21,8 @@ function fitExact(el, containerWidth, minPx = 6, maxPx = 1000, pad = 1) {
 }
 
 export default function LandingNameIntro({
-  first = "DLET",
-  last = "HABTEMARIAM",
+  first = "NATHAN",
+  last = "TESFAMICHAEL",
   duration = 1.2,
   ease = "power3.inOut",
   startDelay = 500,

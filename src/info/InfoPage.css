@@ -1,173 +1,131 @@
-html, body {
-  font-family: serif;
+:root{
+  --text: #000000;     /* main text */
+  --muted: #b7b7c5;    /* secondary text */
+  --line: #2a2a33;     /* subtle borders */
+  --accent: #8b5cf6;   /* links/buttons */
+  --maxw: 1100px;      /* page width */
+  --gap: clamp(16px, 3vw, 28px);
+
+  --radius: 18px;      /* image rounding */
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+
+  --revealY: 24px;     /* slide distance */
+  --revealMs: 650ms;   /* animation duration */
+  --revealDelay: 80ms; /* stagger (optional) */
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
   margin: 0;
-  padding: 0;
-  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial;
+  line-height: 1.5;
 }
 
-/* General layout */
-.info-container {
-  display: flex; /* Desktop layout */
-  justify-content: space-between;
-  padding-top: clamp(60px, 6vw, 80px);
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 0.5s forwards;
-  min-height: 100vh; /* Full viewport height for vertical split on mobile */
+/* Layout */
+.page {
+  width: min(100%, calc(var(--maxw) + 2*var(--gap)));
+  margin-inline: auto;
+  padding: clamp(18px, 3.5vw, 36px);
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+.section { 
+  margin-block: clamp(28px, 7vw, 72px);
 }
 
-/* Left side */
-.left-side {
-  width: 48%;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(16px, 3.2vw, 32px);
+  align-items: start;
+}
+@media (max-width: 900px){
+  .grid-2 { grid-template-columns: 1fr; }
 }
 
-.left-side h2 {
-  font-size: 2rem;
+/* Typography */
+.title {
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
 }
-
-.profile-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.h2 {
+  font-size: clamp(22px, 3.6vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px 0;
 }
-
-.profile-info .profile-img {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  margin-top: 20px;
+.lead {
+  font-size: clamp(16px, 2vw, 18px);
+  color: var(--text);
+  opacity: 0.95;
+  margin: 0 0 14px 0;
 }
-
-.profile-info .description {
-  font-size: 1rem;
-  margin-top: 10px;
-  color: #555;
+.body {
+  color: var(--muted);
+  margin: 0 0 10px 0;
 }
-
-/* Right side */
-.right-side {
-  width: 48%;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.bullets {
+  margin: 10px 0 0 0;
+  padding-left: 1.1rem;
+  color: var(--text);
 }
+.bullets li { margin: 6px 0; }
 
-.right-side h3 {
-  font-size: 1.5rem;
-}
-
-.links-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.links-list li {
-  margin-bottom: 10px;
-}
-
-.links-list a {
+/* CTA button */
+.cta-row { display: flex; gap: 12px; margin-top: 10px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #111;
   text-decoration: none;
-  color: #007BFF;
-  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+  transition: transform 160ms ease, filter 160ms ease;
+}
+.btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+.btn:active { transform: translateY(0); }
+
+/* Images / gallery */
+.img-wrap {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #15151a;
+}
+.img-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.links-list a:hover {
-  text-decoration: underline;
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(10px, 2vw, 16px);
+}
+@media (max-width: 600px){
+  .gallery { grid-template-columns: 1fr; }
 }
 
-/* Resume toggle */
-.resume-toggle {
-  margin-top: 20px;
+/* Reveal animation */
+.reveal { 
+  opacity: 0; 
+  transform: translateY(var(--revealY)); 
+  transition: opacity var(--revealMs) ease, transform var(--revealMs) cubic-bezier(.2,.7,.2,1);
+}
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.resume-content {
-  margin-top: 10px;
-  font-size: 1.1rem;
-}
-
-.resume-content a {
-  color: #007BFF;
-  text-decoration: none;
-}
-
-.resume-content a:hover {
-  text-decoration: underline;
-}
-
-#toggleResume {
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  background-color: #007BFF;
-  color: white;
-  border-radius: 5px;
-}
-
-#toggleResume:hover {
-  background-color: #0056b3;
-}
-/* Mobile (<450px) */
-@media (max-width: 450px) {
-  .info-container {
-    display: grid;
-    grid-template-rows: 1fr 1fr; /* Split height equally */
-    grid-template-columns: 1fr;
-    padding: 20px 10px; /* Less padding to fit more content */
-    gap: 15px;
-    min-height: 100vh;
-  }
-
-  .left-side,
-  .right-side {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically in each grid row */
-    align-items: flex-start; /* Left align content */
-    padding: 0 5vw; /* Make use of more width dynamically */
-  }
-
-  .left-side h2,
-  .right-side h3 {
-    font-size: 6vw; /* Make headings scale with screen width */
-  }
-
-  .profile-info .description {
-    font-size: 4.5vw; /* Scale text with screen width */
-    margin-bottom: 1em;
-  }
-
-  .profile-info .profile-img {
-    width: 40vw; /* Image scales to 40% of viewport width */
-    height: auto; /* Keep aspect ratio */
-    max-width: 150px; /* Optional cap so it’s not too huge on slightly larger screens */
-    margin-bottom: 1em;
-  }
-
-  .links-list a {
-    font-size: 4.5vw; /* Make links scale to screen */
-    line-height: 1.4;
-  }
-
-  .resume-content a {
-    font-size: 4.5vw;
-  }
-
-  #toggleResume {
-    font-size: 4.5vw;
-    padding: 8px 16px;
-  }
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .reveal { transition: none; transform: none; opacity: 1; }
 }

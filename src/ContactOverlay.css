@@ -15,7 +15,8 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(96, 12, 230);
+  /*background-color: rgb(123, 12, 230);*/
+  background-color: rgb(123, 93, 117);
 }
 
 .popup {
@@ -45,7 +46,8 @@ html {
 	height: 60vh; /* Adjust this to your preference */
 	width: 100%;
 	z-index: 1000000;
-	background: #472C4C;
+	/*background: #472C4C;*/
+  background: rgb(72, 54, 84);
 	padding: 30px 20px;
 	line-height: 1rem;
 	display: flex;

@@ -72,7 +72,7 @@ useEffect(() => {
     }
     window.removeEventListener("resize", handleResizePDF);
   };
-}, [isMobile, scale, setIsMobile]);
+}, [isMobile, scale, setIsMobile, iframeRef]);
 
 
   return (

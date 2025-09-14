@@ -11,14 +11,15 @@ export default function AppLayout() {
     <>
       <main>
          <Link to="/" textDecoration="none" color="Black">
-        <LandingNameIntro
-          first="DLET"
-          last="HABTEMARIAM"
-          playOnMount={isHome}     // Play intro only on the home route
-          variant={isHome ? "hero" : "compact"}  // Shrink on other pages
-          startDelay={300}
-        />
+          <LandingNameIntro
+            first="DLET"
+            last="HABTEMARIAM"
+            playOnMount={isHome}     // Play intro only on the home route
+            variant={isHome ? "hero" : "compact"}  // Shrink on other pages
+            startDelay={300}
+          />
         </Link>
+        
         <Outlet />
       </main>
     </>
